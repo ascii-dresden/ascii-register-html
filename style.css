@@ -1,0 +1,20 @@
+th {
+    padding: 10px
+}
+
+.bill {
+    text-align: right;
+    padding-right: 15px
+}
+
+.amount {
+    text-align: center;
+}
+
+.input-amount {
+    width: 60px;
+}
+
+#server-response {
+    margin-top: 20px;
+}

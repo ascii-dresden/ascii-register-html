@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ascii Invoicer</title>
+    <link rel = "stylesheet"
+      type = "text/css"
+      href = "style.css" />
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <form id="mainForm" action="">
+        Your name: <input type="text" required="required" name="name" pattern="[A-Za-z]{1,20}">
+        <table>
+            <tr>
+                <th>Bill / Coin</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    100
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    50
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    20
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    10
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    5
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    2
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    1
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.5
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.2
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.1
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.05
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.02
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+            <tr>
+                <td span class="bill">
+                    0.01
+                </td>
+                <td class="amount">
+                    <input type="number" value=0 name="amounts" class="input-amount">
+                </td>
+            </tr>
+        </table>
+        <input type="button" name="submit-button" value="Submit" onclick="getCalculations()">
+    </form>
+    <div id="server-response"></div>
+</body>
+
+<script type="text/javascript">
+    function getCalculations() {
+        formSerialized = $('#mainForm').serialize();
+        api = "https://register.pibebtol.de";
+        request = api + "/?" + formSerialized;
+        httpGetAsync(request, callback);
+    }
+
+    function callback(response) {
+        console.log("Received from the server:")
+        console.log(response)
+        $('#server-response').html(response);
+    }
+
+    function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }
+</script>
+
+</html>
